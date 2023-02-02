@@ -30,9 +30,9 @@ $(".form").submit(function (e) {
     if (display.validate(Book)) {
         addList();
         display.clear();
-        display.show('success', ' your book has been successfully added')
+        display.show('success', ' <strong>successfull</strong> Book has been Added successfully')
     } else {
-        display.show('danger', '  first fill the form')
+        display.show('danger', ' <strong>Sorry !</strong> First fill the form')
     }
     e.preventDefault();
 });
@@ -55,26 +55,17 @@ class Display {
     }
     show = function (alert, reason) {
 
-        if (alert == 'danger') {
-            let message = document.getElementById('Alert');
-            message.innerHTML = ` <div class="alert alert-danger sticky-top alert-dismissible fade show z-3 position-absolute top-0 start-0 w-100 p-1 rounded-0" role="alert">
-            <strong>Sorry !</strong> ${reason}.
+
+        let message = document.getElementById('Alert');
+        message.innerHTML = ` <div class="alert alert-${alert} sticky-top alert-dismissible fade show z-3 position-absolute top-0 start-0 w-100 p-1 rounded-0" role="alert">
+             ${reason}.
         </div>`
 
-            setTimeout(() => {
-                message.innerHTML = ''
-            }, 3000)
+        setTimeout(() => {
+            message.innerHTML = ''
+        }, 3000)
 
-        } else {
-            let message = document.getElementById('Alert');
-            message.innerHTML = ` <div class="alert alert-${alert} sticky-top alert-dismissible fade show z-3 position-absolute top-0 start-0 w-100 p-1 rounded-0" role="alert">
-            <strong>${alert}</strong> ${reason}.
-        </div>`
 
-            setTimeout(() => {
-                message.innerHTML = ''
-            }, 3000)
-        }
     }
 }
 function addList() {
@@ -106,6 +97,8 @@ function Delete(id) {
     }
     noteobj.splice(id, 1)
     localStorage.setItem('note', JSON.stringify(noteobj));
+    let display = new Display()
+    display.show("danger", "<strong>Deleted ! </strong> Book has been delete successfully");
     addList()
 }
 let inputsec = document.getElementById('myInput')
