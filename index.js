@@ -57,7 +57,7 @@ class Display {
 
 
         let message = document.getElementById('Alert');
-        message.innerHTML = ` <div class="alert alert-${alert} sticky-top alert-dismissible fade show z-3 position-absolute top-0 start-0 w-100 p-1 rounded-0" role="alert">
+        message.innerHTML = ` <div class="alert alert-${alert} text-${alert} text-center sticky-top alert-dismissible fade show z-3 position-absolute top-0 border border-0 start-0 bg-black vw-100 p-1 rounded-0" role="alert">
              ${reason}.
         </div>`
 
@@ -118,7 +118,6 @@ inputsec.addEventListener('input', () => {
         }
     }
 });
-
 
 
 
